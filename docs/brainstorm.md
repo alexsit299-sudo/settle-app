@@ -260,3 +260,199 @@ User can edit or post as-is.
 - Monetization model detail
 - Competitor analysis
 - Pitch deck build
+
+---
+
+## Match Tab — FULLY LOCKED
+
+### How It Opens
+- Opens immediately — no questions, pure taste graph
+- AI already knows enough from onboarding + ongoing data signals
+- Zero gates, zero forms — cards start immediately
+
+### The Card (Full Screen, Tinder-Style)
+- Photo takes 80%+ of screen — immersive, full bleed
+- Gradient at bottom: restaurant name, cuisine, price, rating, distance
+- Two cards visible behind current card — shows depth
+- Entire card is one tap for quick preview (more photos, AI reasoning, hours)
+
+### The Four Gestures
+| Gesture | Action | AI Signal |
+|---|---|---|
+| Swipe right | Interested | Strong positive |
+| Swipe left | Not tonight | Negative for this session |
+| Tap photo | Quick preview | Mild positive (curiosity) |
+| Swipe up | I want THIS one | Immediate match trigger |
+
+### Visual Feedback During Swipe
+- Drag right → green tint grows, ✓ fades into corner
+- Drag left → red tint grows, ✕ fades into corner
+- Release → card snaps away with momentum, physics feel satisfying
+
+### When Swiping Ends
+- AI calls it after ~8 swipes — no visible counter, no progress bar
+- "Settle It" button always visible at top — user can call it any time
+- Swipe up on any card = immediate match trigger, skips remaining cards
+
+### The Mood Text Box (Spotify DJ Model)
+- Single icon top right corner — subtle, never nagged
+- Tap → plain text box, no dropdowns, no filters
+- Natural language input: "something spicy and cheap", "fancy, it's her birthday", "I had a bad day and need comfort food"
+- Claude reads intent, extracts signals, instantly reshuffles cards
+- Catches things no structured input ever could
+
+### The Match Reveal (Solo)
+- Remaining cards fan out slightly
+- All cards except winner slide away in different directions
+- Winner card scales up to fill screen slowly
+- "Matched." appears bold over photo
+- Subtle particle effect — intimate, not full confetti (that's reserved for group)
+- Bottom sheet rises with three options
+
+### Three Post-Match Options
+| Option | Action |
+|---|---|
+| 🎯 Settle with my group | Sends pick to group pool, starts or joins session |
+| 📅 Book for myself | Solo, straight to OpenTable |
+| 🔀 Keep swiping | Soft negative signal, AI reshuffles |
+
+### The Pool Logic (When Sending To Group)
+- Your pick goes into the shared group pool
+- If only one pick in pool → yes/no vote
+- If multiple picks in pool → everyone votes on their favorite restaurant
+- Majority wins — AI breaks ties using group taste profile
+- "Keep swiping" without sending = activity still quietly feeds active group session's suggestion pool
+
+### Data Engine — All Signals That Feed Match
+**Active signals:**
+- Swipes (right/left/up)
+- Mood text box inputs
+- Votes in Settle tab
+- Bookmarks
+
+**Passive signals:**
+- Search queries
+- Feed posts saved or liked
+- Time spent on a card before scrolling (lingering = mild positive)
+- Places actually visited with friends
+- Friend activity engaged with
+- Time patterns (sushi on Fridays, burgers Sundays)
+- Neighborhood patterns
+
+---
+
+## Sessions — FULLY LOCKED
+
+### What A Session Is
+An active decision window — a moment where a person or group is genuinely trying to pick where to eat. The app behaves differently inside a session vs outside one.
+
+**Outside session:** passive browsing, taste training, no urgency
+**Inside session:** oriented toward one outcome, group coordinated, time-relevant
+
+### Two Ways Sessions Start
+
+**Path 1 — Organic (from any restaurant card)**
+User finds restaurant in Explore or Match → taps Settle Here → choice appears:
+- Solo → straight to booking, no session
+- Invite → session created, restaurant enters pool as first pick
+
+**Path 2 — Manual (from Settle tab)**
+Open Settle tab → Start a Session → select friends or group → session opens empty → everyone adds to pool
+
+### Pre-Set Groups
+- Save recurring eating circles: "The Crew", "Work Lunch", "Family"
+- One tap to invite entire group vs adding one by one
+- Groups build their own taste profile over time separate from individual profiles
+- AI learns what specific combinations of people tend to settle on together
+
+### Session States
+```
+Created → Active → Settling → Settled → Closed
+```
+- **Created:** initialized, invites sent
+- **Active:** people engaged, pool filling, voting in progress
+- **Settling:** AI processing, loading animation
+- **Settled:** verdict delivered, confetti, share prompt
+- **Closed:** time expired or manually closed, data fed back to all taste graphs
+
+### The Pool Voting System
+**One restaurant in pool:**
+Simple yes/no vote from group members
+
+**Multiple restaurants in pool:**
+Everyone votes for their favorite. Majority wins. AI breaks ties using group taste profile.
+Pool is visible to all session members in real time — shared board filling up as friends add picks.
+
+### Session Rules
+- Anyone in the group can start a session
+- One active session at a time per user
+- Can leave a session freely to join another
+- Casual tone throughout — no urgency UI, no countdown timers, no repeated nudges
+
+### Notifications
+- Push notification when invited: "Alex started a Settle session — The Crew is deciding tonight. 🍽️"
+- Badge on Settle tab icon for meaningful events (pick added, voting started, decision made)
+- One notification per meaningful event — never spam
+
+### Session Expiry
+- Auto-expires after 2 hours of inactivity
+- One gentle notification before expiry
+- Closes quietly, activity logged to history
+- Next session with same group: AI remembers last time
+
+### Group Taste Profile
+- Builds separately from individual profiles
+- Tracks what specific combinations of people settle on together
+- Feeds into AI recommendations when that group has an active session
+
+---
+
+## Settle Tab — FULLY LOCKED
+
+### Empty State (No Active Session)
+```
+⚡ settle.
+
+No active session
+[ + Start a Session ]
+
+Your Groups
+[The Crew →]  [Work Lunch →]
+
+Recent Sessions
+🍣 Nobu · The Crew · Tuesday
+🍔 Au Cheval · Mike · Saturday
+```
+
+### Active Session State
+```
+⚡ Active Session
+The Crew · Tonight
+
+The Pool
+🥩 Maple & Ash   — Alex
+🍣 Nobu          — Sarah
++ Add yours
+
+Votes
+✅ Alex    ✅ Sarah
+⏳ Mike    ⏳ Jordan
+
+[ ⚡ Settle It Now ]
+```
+
+### Persistent Session Banner
+When session is active, subtle banner lives at top of every tab.
+Tapping it brings you to Settle tab.
+Follows you around the app without taking over.
+
+---
+
+## Still To Design
+- Friends tab
+- Full restaurant page depth (map, photos, menu highlights)
+- Yelp + OpenTable integration details
+- AI engine architecture
+- Monetization model
+- Competitor analysis
+- Pitch deck
