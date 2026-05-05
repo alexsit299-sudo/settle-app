@@ -517,3 +517,113 @@ Trending restaurants stay in Explore. No bleed between tabs.
 - Comments (needs moderation team first)
 - Restaurant discovery in Discover section (stays in Explore for now)
 
+
+---
+
+## Restaurant Page — FULLY LOCKED
+
+### Photo Gallery (Top)
+- Full width hero photo, swipeable
+- Dot indicator for multiple photos
+- Mix of Yelp API photos + friend post photos (labeled "from Sarah")
+- Back button + bookmark icon overlaid
+
+### Core Info Block
+- Name, cuisine, price tier, rating + review count
+- Address (tappable → native maps app — no embedded map)
+- Open now / closes at X status
+- Phone number (tappable → calls directly)
+- Hours (tappable → expands to full week)
+
+### AI Reasoning Block
+- "Why we picked this" — Claude generated fresh every time
+- Personalized to signals that surfaced this restaurant for this user
+- Written in Settle's voice — specific, funny, never generic
+
+### Availability Block
+- Party size selector
+- MVP: shows open hours from Yelp, "check OpenTable for exact availability"
+- V2: real OpenTable time slots shown natively
+- Fallback for no availability: phone number + walk-in note
+
+### Menu Highlights Block
+- SKIPPED FOR NOW — space reserved in design
+- V2: Claude reads top 20 Yelp reviews, extracts most-mentioned dishes
+- No extra menu API needed — AI extraction from review text
+
+### Friend Activity Block
+- Photos from friends who settled here and shared
+- Reaction summary ("8 people in your network reacted 🤤")
+- Trust signal — real people you know, more persuasive than star ratings
+
+### Similar Restaurants (Bottom)
+- 3 picks powered by Yelp similar business search
+- Horizontal scroll, each tappable
+- No extra AI calls — Yelp handles matching by category + location
+
+### Two CTAs — Pinned To Bottom Always
+- 🎯 Settle Here (red — primary) → pre-loads restaurant into pool
+- 📅 Book a Table (blue — secondary) → OpenTable deep link
+
+---
+
+## Integrations — FULLY LOCKED
+
+### Yelp Fusion API
+Primary data backbone for all restaurant information.
+
+| Data | Used for |
+|---|---|
+| Name, address, phone | Core info block |
+| Rating + review count | Trust signal |
+| Price tier | Filtering + display |
+| Categories/cuisine | Matching + display |
+| Photos (3 free tier) | Gallery |
+| Hours + is_open_now | Availability status |
+| Coordinates | Distance calculation |
+| Review text | Menu highlights in v2 |
+
+Limits: 500 calls/day free tier. Sufficient for MVP.
+Upgrade path: Yelp paid tier or Google Places for richer photos at scale.
+
+### OpenTable — Three Phase Plan
+**Phase 1 (MVP):** Deep link only
+- Tap Book a Table → OpenTable.com opens in browser or app
+- User completes booking there
+- Settle earns nothing but user gets booking done
+- Availability shown = Yelp hours only
+
+**Phase 2 (V2):** Affiliate program
+- Apply once session volume is meaningful
+- Tracking link per restaurant
+- $1-5 commission per diner booked through Settle
+- Monetization begins
+
+**Phase 3 (V3):** Direct API partnership
+- Real-time table availability shown natively
+- Booking completed without leaving Settle
+- Deeper revenue share negotiated
+- Requires traction and user volume to negotiate
+
+### Resy
+- Parallel path to OpenTable in V3
+- Different restaurants use different platforms — need both
+- Same three-phase approach
+
+### Restaurants Not On Either Platform
+- Phone number shown prominently, tap to call
+- Link to restaurant's own website if available
+- "Walk-ins welcome" label for casual spots
+
+### Map
+- No embedded map (Mapbox/Google Maps adds cost + complexity)
+- Address tap → opens Apple Maps or Google Maps natively
+- Users already know this interaction, zero learning curve
+
+### Build Order
+```
+MVP:  Yelp API + Claude reasoning + OpenTable deep link + native maps
+V2:   OpenTable affiliate + real availability slots + menu highlights
+V3:   OpenTable + Resy direct API + in-app booking + Google Places
+```
+
