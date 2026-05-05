@@ -456,3 +456,64 @@ Follows you around the app without taking over.
 - Monetization model
 - Competitor analysis
 - Pitch deck
+
+---
+
+## Friends Tab — FULLY LOCKED
+
+### What It Is
+Pure social feed. No management, no logistics — that lives in Settle tab.
+Every post is a real decision that happened, auto-generated from app activity.
+Key differentiator: every post is actionable — Settle Here turns browsing into a decision instantly.
+
+### Three Post Types
+
+**Group settled post**
+- Profile pic + names of who settled
+- Restaurant photo
+- Auto-generated Settle-voice caption (editable before sharing)
+- Cuisine, price, neighborhood
+- Reactions + Settle Here button
+
+**Solo settled post**
+- Same structure, single person
+- More personal caption tone
+
+**Saved recommendation post**
+- Friend bookmarked something and chose to share
+- Custom caption option
+- Same reactions + Settle Here
+
+### Reactions (Food-Coded)
+| Reaction | Meaning | Also does |
+|---|---|---|
+| 🔥 | Looks amazing | Positive signal for that restaurant in your Explore feed |
+| 🤤 | Want to go | Soft bookmark added |
+| 👀 | Watching / curious | Mild positive signal |
+| ✅ | Been there, it's great | Social validation for others |
+
+Reactions feed back into the Explore algorithm invisibly.
+12+ 🤤 reactions from your network = that restaurant climbs your feed.
+
+### Feed Structure
+**Following** (primary) — friends and people you follow
+- Chronological with light ranking
+- Closer friends and recent activity surface higher
+
+**Discover** (secondary) — public accounts only
+- People with similar taste in your city
+- Food influencers, local tastemakers
+- How the app grows organically — no ads needed
+- Toggle between Following / Discover at top of tab
+
+Trending restaurants stay in Explore. No bleed between tabs.
+
+### Settle Here Button On Posts
+- Pre-loads that restaurant as the first pick in your pool
+- Starts or joins a session instantly
+- Social feed → decision pipeline is seamless, one tap
+
+### What's Saved For V2
+- Comments (needs moderation team first)
+- Restaurant discovery in Discover section (stays in Explore for now)
+
