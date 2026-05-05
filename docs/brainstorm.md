@@ -819,3 +819,53 @@ our free user base, the more valuable we are to that ecosystem. We are not
 charging users for convenience — we are building the infrastructure that makes 
 the restaurant industry smarter."
 
+
+---
+
+## Competitor Analysis — FULLY LOCKED
+
+### Category 1 — Restaurant Discovery (Obvious Competitors)
+| App | What they do | Why Settle wins |
+|---|---|---|
+| Yelp | Directory + reviews | Passive, no decision engine, no group layer |
+| Google Maps | Search + reviews | Search tool not decision tool, assumes you know what you want |
+| OpenTable/Resy | Booking | Starts after decision is made — Settle owns the moment before |
+| TripAdvisor | Reviews + discovery | Tourist-focused, no social layer, no AI matching |
+| The Infatuation/Eater | Editorial recs | Human-curated, not personalized, no group feature |
+
+**Shared gap:** None solve group decision problem. None learn individual taste. All are directories or booking tools.
+
+### Category 2 — Social + Discovery (Adjacent Threats)
+| App | What they do | Why Settle wins |
+|---|---|---|
+| Instagram | Food content, discovery | Passive — no decision engine, no booking layer |
+| TikTok | Restaurant discovery via content | Content-driven not decision-driven |
+| Beli | Social restaurant tracking | Closest competitor — no group decision flow, no AI, no booking, small user base |
+| Foursquare/Swarm | Check-ins, recommendations | Essentially dead as consumer product, pivoted to B2B |
+
+**Beli is the most direct overlap.** Watch closely. No group flow, no AI matching, no booking integration — a log and discover tool, not a decide and go tool.
+
+### Category 3 — Data + Behavioral (Long-Term Competition)
+| Company | What they have | The overlap |
+|---|---|---|
+| Foursquare | Location + foot traffic data, B2B | Pivoted from consumer to pure data — Settle does both |
+| Placer.ai | Foot traffic behavioral data | Real estate/retail intelligence — our data overlaps |
+| Numerator | Consumer purchase behavior | CPG brands buy from them — we compete for same budgets |
+| Epsilon/Acxiom | Behavioral targeting data | Our revealed preference data is more granular and accurate |
+
+**Structural advantage:** All pure B2B data companies — no consumer product. Settle generates the data AND earns B2B revenue. They buy data. We create it.
+
+### The Gap Nobody Owns
+```
+Nobody owns the group food decision moment
+Nobody has built social around actual decisions (not content)
+Nobody has a taste graph built from real behavioral signals
+Nobody connects discovery → decision → booking in one place
+```
+
+### The Google Threat — The Answer Investors Will Ask For
+Google builds tools, not experiences. Maps and Search are utility.
+Settle's value is personality, social dynamics, and emotional satisfaction of a decision made for you.
+Google has never built a product with that brand identity.
+And by the time they ship, Settle has 2 years of taste graph data that can't be replicated overnight.
+
