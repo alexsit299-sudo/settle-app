@@ -763,3 +763,59 @@ Group settles:
 | Push notifications | Expo | Free tier |
 | Auth + SMS | Supabase Auth + Twilio | Small per-SMS cost |
 
+
+---
+
+## Monetization Model — FULLY LOCKED
+
+### Core Principle
+Users never pay. Ever. Free forever — no subscription, no trial, no feature gates.
+The user base is the product that makes everything else valuable.
+
+### Why No Subscription
+- Convenience apps benchmarked against free alternatives (Google, texting friends)
+- Paywall before brand loyalty = asking users to pay for a promise
+- Every lost user = their entire social graph lost too
+- Scale and network effects require zero friction adoption
+
+### The Flywheel
+```
+Free users → richer data → more valuable to B2B
+→ more restaurant partnerships → better product → more free users
+```
+
+### Revenue Streams
+
+**Supply side (restaurants/brands pay — users feel nothing):**
+| Stream | How | Timeline |
+|---|---|---|
+| OpenTable/Resy commissions | $1-5 per cover booked through Settle | V2 |
+| Featured placement | Restaurants pay to rank higher in feed | V2 |
+| Brand partnerships | CPG brands pay for access to behavioral segments | V3 |
+
+**Data side (completely invisible to users):**
+| Stream | How | Timeline |
+|---|---|---|
+| Aggregate data licensing | Anonymized behavioral insights to brands, real estate, hospitality | V2-V3 |
+| Decision science data | Group dynamics, stated vs revealed preferences, social influence | V3 |
+| Advertising network | Behavioral targeting — revealed preferences beat demographics | V3 |
+
+**Optional user-facing (never gates core experience):**
+- Settle Pro: aspirational extras only (advanced taste analytics, unlimited groups, decision stats)
+- Only introduced after user behavior reveals what people genuinely want to pay for
+- Follows Spotify model — free is complete, Pro is additive
+
+### Revenue Trajectory
+```
+MVP (0-6 months):    Focus on users and data, not revenue
+V2 (6-18 months):    OpenTable affiliate + featured placement + first data licensing
+V3 (18 months+):     Data licensing primary revenue, advertising network, enterprise
+```
+
+### The Investor Pitch
+"Settle is free forever for users. Revenue comes from the restaurant and brand 
+ecosystem that wants access to our behavioral data and user base. The bigger 
+our free user base, the more valuable we are to that ecosystem. We are not 
+charging users for convenience — we are building the infrastructure that makes 
+the restaurant industry smarter."
+
