@@ -627,3 +627,139 @@ V2:   OpenTable affiliate + real availability slots + menu highlights
 V3:   OpenTable + Resy direct API + in-app booking + Google Places
 ```
 
+
+---
+
+## AI Engine — FULLY LOCKED
+
+### Model Strategy — Hybrid Approach
+
+**Groq (Llama 3.3 70B)** — logic and structure
+- Mood text parsing
+- Restaurant selection from group votes
+- Session logic
+- Free tier: 14,400 requests/day (~4,800 DAU at zero cost)
+- Paid: ~$0.59/$0.79 per million tokens
+
+**Claude (Sonnet)** — personality and voice
+- Reasoning text generation ("why we picked this")
+- Caption generation for settled moments
+- Both cached after first generation
+- Only fires where brand personality visibly matters
+
+### Cost At Scale
+```
+1,000 DAU  → Groq free + Claude ~$0.08/day = ~$0.08/day
+10,000 DAU → ~$0.80/day total
+100,000 DAU → ~$8/day (OpenTable revenue >> this by then)
+```
+
+### The Six-Signal Scoring Algorithm
+
+Pure math. No LLM. Runs instantly in the database.
+
+```
+Final Score =
+  (taste_match    × 0.35) +
+  (social_signal  × 0.20) +
+  (quality_signal × 0.15) +
+  (context_signal × 0.15) +
+  (trending       × 0.10) +
+  (novelty        × 0.05)
+```
+
+**Taste Match (0.35)**
+```
+taste_match =
+  (cuisine_score × 0.40) +  // top 5 = 1.0, adjacent = 0.7, neutral = 0.3, avoided = 0.0
+  (price_score   × 0.35) +  // exact = 1.0, one tier off = 0.6, two off = 0.2
+  (vibe_score    × 0.25)    // learned from swipe patterns + decision history
+```
+
+**Social Signal (0.20)**
+```
+social_signal =
+  (friends_settled × 0.50) +   // recency weighted: this week = 1.0, this month = 0.6
+  (friends_reacted × 0.30) +   // 🤤 reactions from network
+  (friends_saved   × 0.20)     // bookmarked by someone you follow
+```
+
+**Quality Signal (0.15)**
+```
+quality_signal =
+  (normalized_rating  × 0.60) +  // 4.8★ = 0.96, below 3.5 filtered entirely
+  (review_confidence  × 0.40)    // 10 reviews = 0.30, 1000+ = 1.00
+```
+
+**Context Signal (0.15)**
+```
+context_signal =
+  (open_now    × 0.40) +   // binary 1.0/0.0
+  (time_match  × 0.35) +   // brunch spots AM, dinner spots PM, bars late night
+  (day_pattern × 0.25)     // learned: user gets sushi on Fridays
+```
+
+**Trending (0.10)**
+Recent settle volume ÷ baseline average for that restaurant. Surfaces momentum without knowing why.
+
+**Novelty (0.05)**
+```
+novelty = 1.0 - recency_penalty
+// Shown today = 0.9 penalty, this week = 0.5, this month = 0.2, 30+ days = 0.0
+```
+
+### Session Mode Override
+When active session running: context_signal weight doubles (0.15 → 0.35)
+Open now and distance become critical when actually deciding tonight.
+
+### Mood Text Override (Groq)
+Temporary session-level weight shift based on parsed intent.
+"Something light" → sushi/salads boosted, steakhouses suppressed for this session only.
+Does not permanently alter taste profile.
+
+### Cold Start (New Users)
+No history → lean on quality + trending:
+quality = 0.40, trending = 0.20, context = 0.25, taste = 0.15 (onboarding only)
+Normalizes to standard weights as swipe/decision history builds.
+
+### Caching Strategy
+- Restaurant data (Yelp): 24hr cache — 1 API call serves thousands of users
+- Reasoning text (Claude): cached per user+restaurant combo, regenerate only if profile changes significantly
+- Recommendations: pre-computed nightly for active users, served instantly on app open
+- Session data: Supabase real-time subscriptions, no AI involved
+
+### Full Request Flow
+```
+App open:
+  Supabase → user profile + signals
+  Yelp cache → restaurants in area
+  Hard filters → diet, closed, distance
+  Scoring algorithm → ranked list
+  → Feed ready, ZERO AI calls
+
+Mood text:
+  → 1 Groq call: parse intent
+  → Re-score with session override
+  → Feed updates instantly
+
+Restaurant page:
+  → Check reasoning cache
+  → Cache miss: 1 Claude call, store result
+  → Cache hit: zero cost
+
+Group settles:
+  → 1 Groq call: pick from votes + reasoning
+  → 1 Claude call: generate shareable caption
+```
+
+### Tech Stack
+| Layer | Tool | Cost |
+|---|---|---|
+| Database + vectors | Supabase (PostgreSQL + pgvector) | Free to start |
+| Restaurant data | Yelp Fusion API (24hr cache) | Free 500 calls/day |
+| AI logic | Groq (Llama 3.3 70B) | Free to ~4,800 DAU |
+| AI personality | Claude Sonnet (Anthropic) | ~$0.08/day per 1K DAU |
+| Hosting | Vercel | Free to start |
+| Push notifications | Expo | Free tier |
+| Auth + SMS | Supabase Auth + Twilio | Small per-SMS cost |
+
